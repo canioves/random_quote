@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
 
-function App() {
+function QuoteText({ text }) {
+  return <p id="text">{text}</p>;
+}
+
+function QuoteAuthor({ author }) {
+  return <p id="author">{author}</p>;
+}
+
+function NewQuote({ onNewQuoteClick }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <button id="new-quote" onClick={onNewQuoteClick}>
+      New Quote
+    </button>
   );
 }
 
-export default App;
+export default function QuoteBox() {
+  const [quote, setQuote] = useState({});
+  let quotesData;
+
+  async function getQuote() {
+    const url = "https://type.fit/api/quotes";
+    try {
+      const req = await fetch(url);
+      const data = await req.json();
+      quotesData = data;
+    } catch (err) {
+      console.error("Something went wrong:\n", err);
+      return null;
+    }
+  }
+  useEffect(() => {
+    getQuote();
+    handleQuote();
+  });
+
+  function getRandomQuote() {
+    const index = Math.floor(Math.random() * quotesData.length);
+    return quotesData[index];
+  }
+
+  function handleQuote() {
+    const nextQuote = getRandomQuote();
+    setQuote(nextQuote);
+  }
+
+  return (
+    <div id="container">
+      <div id="quote-box">
+        <QuoteText text={quote.text} />
+        <QuoteAuthor author={quote.author} />
+        <NewQuote onNewQuoteClick={handleQuote} />
+        <a id="tweet-quote" href="twitter.com/intent/tweet">
+          Tweet Quote
+        </a>
+      </div>
+    </div>
+  );
+}
