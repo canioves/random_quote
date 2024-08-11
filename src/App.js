@@ -1,5 +1,30 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+async function fetchQuotes() {
+  const url = "https://type.fit/api/quotes";
+  try {
+    const req = await fetch(url);
+    const data = await req.json();
+    return data.slice(0, data.length - 1);
+  } catch (err) {
+    console.error("Something went wrong:\n", err);
+    return null;
+  }
+}
+
+let quotesData = await fetchQuotes();
+const initQuote = getRandomQuote();
+
+function getRandomQuote() {
+  const index = Math.floor(Math.random() * quotesData.length);
+  const quote = quotesData[index];
+  return ({
+    text: quote.text,
+    author: quote.author.replace(", type.fit", "")
+  })
+}
+
 
 function QuoteText({ text }) {
   return <p id="text">{text}</p>;
@@ -18,29 +43,7 @@ function NewQuote({ onNewQuoteClick }) {
 }
 
 export default function QuoteBox() {
-  const [quote, setQuote] = useState({});
-  let quotesData;
-
-  async function getQuote() {
-    const url = "https://type.fit/api/quotes";
-    try {
-      const req = await fetch(url);
-      const data = await req.json();
-      quotesData = data;
-    } catch (err) {
-      console.error("Something went wrong:\n", err);
-      return null;
-    }
-  }
-  useEffect(() => {
-    getQuote();
-    handleQuote();
-  });
-
-  function getRandomQuote() {
-    const index = Math.floor(Math.random() * quotesData.length);
-    return quotesData[index];
-  }
+  const [quote, setQuote] = useState(initQuote);
 
   function handleQuote() {
     const nextQuote = getRandomQuote();

@@ -1,16 +1,10 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url(https://db.onlinewebfonts.com/c/2da952d097bffd198ec0f0aa3fdd6804?family=JejuHallasan);
 
-html, body, #root {
-  height: 100%;
-}
-
-#container {
-  height: 100%;
+#root {
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #452716;
 }
 
 #quote-box {
@@ -18,7 +12,55 @@ html, body, #root {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30%;
+  width: 80vw;
   transform: translate(-50%, -50%);
-  border: 1px solid green;
+  background: #a175ff;
+  border-radius: 31px;
+}
+
+#text {
+  font-family: "JejuHallasan";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 128px;
+  line-height: 119px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+#author {
+  font-family: "JejuHallasan";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 93.04%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #6F1717;
+  margin-left: 1000px;
+}
+
+#new-quote {
+  display: block;
+  width: 250px;
+  background: #633ccf;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 32px;
+  font-family: "JejuHallasan";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 93.04%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #6f1717;
+  position: relative;
+  top: 50px;
+  left: 1280px; 
+}
+
+#tweet-quote {
+  display: none;
 }
