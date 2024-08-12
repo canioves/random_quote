@@ -1,66 +1,58 @@
-@import url(https://db.onlinewebfonts.com/c/2da952d097bffd198ec0f0aa3fdd6804?family=JejuHallasan);
-
+/* Root element styling */
 #root {
-  position: relative;
-  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background: #452716;
-}
-
-#quote-box {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  font-family: 'Georgia', serif;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  transform: translate(-50%, -50%);
-  background: #a175ff;
-  border-radius: 31px;
 }
 
+/* Container styling */
+#container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Quote text styling */
 #text {
-  font-family: "JejuHallasan";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 128px;
-  line-height: 119px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
 }
 
+/* Author styling */
 #author {
-  font-family: "JejuHallasan";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 70px;
-  line-height: 93.04%;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #6F1717;
-  margin-left: 1000px;
+  font-size: 1.4rem;
+  color: #555;
+  margin-bottom: 25px;
+  font-weight: bold;
 }
 
+/* Button styling */
 #new-quote {
-  display: block;
-  width: 250px;
-  background: #633ccf;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 32px;
-  font-family: "JejuHallasan";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 93.04%;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #6f1717;
-  position: relative;
-  top: 50px;
-  left: 1280px; 
+  background: #ff6f61;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
+#new-quote:hover {
+  background: #ff4b3e;
+  transform: scale(1.05);
+}
+
+/* Tweet quote link styling */
 #tweet-quote {
   display: none;
 }
